@@ -22,3 +22,12 @@ works.forEach(work => {
 const requeteCategories = await fetch("http://localhost:5678/api/categories");
 const categories = await requeteCategories.json();
 console.log(categories);
+
+// Création des catégories dans la section "filtres"
+const filtersContainer = document.querySelector(".filters");
+categories.forEach(category => {
+    const button = document.createElement("button");
+    button.textContent = category.name;
+    button.setAttribute("data-category", category.id);
+    filtersContainer.appendChild(button);
+});
