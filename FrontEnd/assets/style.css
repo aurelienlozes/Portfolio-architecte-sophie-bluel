@@ -192,3 +192,18 @@ footer nav ul {
 	margin-bottom: 3em;
 }
 
+
+.filters a {
+    display: flex;
+    align-items: center;
+	font-family: 'Syne';
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 16px;
+	margin: 0 5px;
+	text-decoration: none;
+	color: #1D6154;
+    border: #1D6154 solid 1px;
+    border-radius: 30px;
+}
+
