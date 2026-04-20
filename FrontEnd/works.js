@@ -26,8 +26,8 @@ console.log(categories);
 // Création des catégories dans la section "filtres"
 const filtersContainer = document.querySelector(".filters");
 categories.forEach(category => {
-    const button = document.createElement("button");
-    button.textContent = category.name;
-    button.setAttribute("data-category", category.id);
-    filtersContainer.appendChild(button);
+    const a = document.createElement("a");
+    a.textContent = category.name;
+    a.setAttribute("href", `#`);
+    filtersContainer.appendChild(a);
 });
