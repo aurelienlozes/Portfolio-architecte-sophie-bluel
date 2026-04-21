@@ -41,6 +41,9 @@ categories.forEach(category => {
     a.setAttribute("href", `#`);
     a.setAttribute("data-filter", category.id);
     filtersContainer.appendChild(a);
+    if(category.id === 0) {
+        a.classList.add("active"); // Par défaut, le filtre "Tous" est actif
+    }
 
     // ajout d'un écouteur d'événement pour filtrer les travaux lors du clic sur une catégorie
     a.addEventListener("click", (event) => {
@@ -48,7 +51,22 @@ categories.forEach(category => {
         event.preventDefault(); // Empêche le comportement par défaut du lien
         const filter = event.target.getAttribute("data-filter");
         const filteredWorks = filter === "0" ? works : works.filter(work => work.categoryId == filter);
-        displayWorks(filteredWorks);   
-        event.target.setAttribute("class", "active");
+        displayWorks(filteredWorks); // Affiche les travaux filtrés
+        btnUpdate(event.target); // Met à jour l'état actif du bouton de filtre
     });
 });
+
+/** Fonction pour mettre à jour l'état actif des boutons de filtre
+ * @param {HTMLElement} activeBtn - Le bouton de filtre actuellement actif
+ */
+function btnUpdate(activeBtn) {
+    const buttons = document.querySelectorAll(".filters a");
+    buttons.forEach(button => {
+        if (button === activeBtn) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
+    });
+
+}
