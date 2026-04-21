@@ -207,3 +207,13 @@ footer nav ul {
     border-radius: 30px;
 }
 
+.filters a:hover {
+	color: white;
+    background-color: #1D6154;
+}
+
+.filters a.active {
+	color: white;
+	background-color: #1D6154;
+}
+
