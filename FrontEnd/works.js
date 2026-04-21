@@ -5,7 +5,11 @@ console.log(works);
 
 // Affichage des travaux dans la section "portfolio"
 const gallery = document.querySelector(".gallery");
+displayWorks(works);  
 
+/** Fonction pour afficher les travaux dans la galerie
+ * @param {Array} works - Tableau d'objets représentant les travaux à afficher
+ */
 function displayWorks(works) {
     gallery.innerHTML = "";
     works.forEach(work => {
@@ -24,7 +28,8 @@ function displayWorks(works) {
 
 // Récupération des catégories depuis l'API
 const requeteCategories = await fetch("http://localhost:5678/api/categories");
-const categories = await requeteCategories.json();
+let categories = await requeteCategories.json();
+categories.unshift({ id: 0, name: "Tous" }); // Ajout d'une catégorie "Tous" pour afficher tous les travaux
 console.log(categories);
 
 // Création des catégories dans la section "filtres"
@@ -42,7 +47,8 @@ categories.forEach(category => {
         //console.log(`Filtre sélectionné : ${category.name}`);
         event.preventDefault(); // Empêche le comportement par défaut du lien
         const filter = event.target.getAttribute("data-filter");
-        const filteredWorks = filter === "all" ? works : works.filter(work => work.categoryId == filter);
-        displayWorks(filteredWorks);        
+        const filteredWorks = filter === "0" ? works : works.filter(work => work.categoryId == filter);
+        displayWorks(filteredWorks);   
+        event.target.setAttribute("class", "active");
     });
 });
