@@ -217,3 +217,46 @@ footer nav ul {
 	background-color: #1D6154;
 }
 
+#login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 650px;
+}
+
+#login h2 {
+	margin-bottom: 2em;
+}
+
+#login form{
+	display: flex;
+	flex-direction: column;
+}
+
+#login label, a {
+	font-family: 'work sans';
+	font-weight: 500;
+	font-size: 14px;
+	color: #000;
+	margin-bottom: 10px;
+}
+
+#login input {
+	width: 379px;
+	height: 51px;
+	font-size: 18px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom: 30px;
+	padding-left: 15px;
+}
+
+#login input[type="submit"]{
+	width: 179px;
+	height: 36px;
+	font-size: 14px;
+	padding-left: 0px;
+}
+
+
