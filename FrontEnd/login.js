@@ -23,13 +23,13 @@ loginForm.addEventListener('submit', async (event) => {
             window.location.href = 'index.html'; // Redirige vers la page d'accueil
         } else {
             const errorData = await response.json();
-            alert(`Erreur: ${errorData.message}`);
+            console.error('Erreur de connexion:', errorData.message);
+            alert('Une erreur est survenue lors de la connexion. Veuillez réessayer.');
         }
     } catch (error) {
-        //console.error('Erreur de connexion:', error);
-        alert('Une erreur est survenue lors de la connexion. Veuillez réessayer.');
+        console.error('Erreur de connexion:', error);
     } finally {
-        loginForm.reset(); // Réinitialise le formulaire après la tentative de connexion
+        document.getElementById('email').value = ''; // Efface le champ email
+        document.getElementById('password').value = ''; // Efface le champ mot de passe
     }
-    
 });
