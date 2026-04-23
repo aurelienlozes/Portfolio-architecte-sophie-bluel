@@ -93,18 +93,23 @@ nav ul {
 }
 nav li {
 	padding: 0 10px;
+}
+
+nav li a{
+	text-decoration: none;
+	padding: 0 10px;
 	font-size: 1.2em;
 }
 
-li:hover {
+nav li a:hover {
 	color: #B1663C;
 }
 
-li.active {
+nav li a.active {
 	font-weight: 600;
 }
 
-li.active:hover {
+nav li a.active:hover {
 	color:black
 }
 
