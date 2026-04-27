@@ -10,6 +10,16 @@ if (!token || token === "") {
     switchLogBtn(true);
 }
 
+// Récupération des travaux depuis l'API
+const requete = await fetch("http://localhost:5678/api/works");
+const works = await requete.json();
+
+const requeteCategories = await fetch("http://localhost:5678/api/categories");
+const categories = await requeteCategories.json();
+
+// Affiche les travaux dans la modale d'édition
+displayWorksInModal(works); 
+
 /** Affiche ou masque les éléments de la page en fonction du mode d'édition
  * @param {boolean} value - true pour afficher les éléments d'édition, false pour les masquer
  */
@@ -62,4 +72,22 @@ function displayModal(value) {
     const modal = document.querySelector(".modal-overlay");
     modal.style.display = value ? "block" : "none";
     modal.setAttribute("aria-hidden", !value);
+}
+
+
+/** Afficher les travaux dans la modale d'édition
+ * @param {Array} works - Tableau d'objets représentant les travaux à afficher
+ */
+function displayWorksInModal(works) {
+    const galleryModal = document.querySelector(".modal-gallery");
+    galleryModal.innerHTML = "";
+    works.forEach(work => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        img.src = work.imageUrl;
+        img.alt = work.title;
+        img.height = 102;
+        figure.appendChild(img);
+        galleryModal.appendChild(figure);
+    });
 }

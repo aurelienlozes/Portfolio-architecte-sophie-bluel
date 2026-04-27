@@ -113,6 +113,10 @@ nav li {
 }
 
 nav li a{
+	font-family: 'work sans';
+	font-weight: 500;
+	font-size: 14px;
+	color: #000;
 	text-decoration: none;
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -285,7 +289,7 @@ footer nav ul {
 	flex-direction: column;
 }
 
-#login label, a {
+#login label, #login a {
 	font-family: 'work sans';
 	font-weight: 500;
 	font-size: 14px;
@@ -310,6 +314,13 @@ footer nav ul {
 	padding-left: 0px;
 }
 
+.open-modal {
+	font-family: 'work sans';
+	font-weight: 500;
+	font-size: 14px;
+	color: #000;
+}
+
 .modal-overlay {
 	position: fixed;
 	z-index: 1;
@@ -322,6 +333,9 @@ footer nav ul {
 }
 
 .modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center	;
 	background-color: white;
 	margin: 15% auto;
 	padding: 20px;
@@ -333,7 +347,8 @@ footer nav ul {
 .modal-header {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 20px;
+	width: 100%;
+	margin-bottom: 40px;
 }
 
 .modal-header .close-btn {
@@ -355,3 +370,42 @@ footer nav ul {
 	color: black;
 }
 
+.modal-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	gap: 10px;
+	width:422px;
+	height: 500px;
+	border-bottom: #B3B3B3 solid 1px;
+}
+
+.modal-gallery figure {
+	height: 102px;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 115px;
+}
+
+.modal-add-photo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 180px;
+	height: 36px;
+	text-decoration: none;
+	border-radius: 60px;
+}
+
+.modal-add-photo a {
+	margin-bottom: 200px;
+}
