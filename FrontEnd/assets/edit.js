@@ -88,6 +88,15 @@ function displayWorksInModal(works) {
         img.alt = work.title;
         img.height = 102;
         figure.appendChild(img);
+        const deleteBtn = document.createElement("a");
+        deleteBtn.setAttribute("href", "#");
+        deleteBtn.classList.add("modal-delete-btn");
+        deleteBtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+        deleteBtn.addEventListener("click", () => {
+            //console.log(`Suppression du travail : ${work.title} (ID: ${work.id})`);
+            //deleteWork(work.id);
+        });
+        figure.appendChild(deleteBtn);
         galleryModal.appendChild(figure);
     });
 }
