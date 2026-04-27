@@ -1,7 +1,3 @@
-// Récupération des travaux depuis l'API
-const requete = await fetch("http://localhost:5678/api/works");
-const works = await requete.json();
-console.log(works);
 
 // Récupération des catégories depuis l'API
 const requeteCategories = await fetch("http://localhost:5678/api/categories");
@@ -11,7 +7,18 @@ console.log(categories);
 
 // Affichage des travaux dans la section "portfolio"
 const gallery = document.querySelector(".gallery");
-displayWorks(works);  
+loadAndDisplayAllWorks();
+
+/** charge puis affiche tous les travaux
+ * 
+ */
+export async function loadAndDisplayAllWorks() {
+    // Récupération des travaux depuis l'API
+    const requete = await fetch("http://localhost:5678/api/works");
+    const works = await requete.json();
+    console.log(works);
+    displayWorks(works);
+}
 
 /** Fonction pour afficher les travaux dans la galerie
  * @param {Array} works - Tableau d'objets représentant les travaux à afficher

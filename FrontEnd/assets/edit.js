@@ -1,3 +1,5 @@
+import { loadAndDisplayAllWorks } from "./works.js";
+
 // récupération des données depuis l'API
 const token = localStorage.getItem("token");
 if (!token || token === "") {
@@ -109,6 +111,7 @@ function deleteWork(workId) {
             console.log(`Travail avec ID ${workId} supprimé avec succès.`);
             // Met à jour l'affichage des travaux après la suppression
             displayWorksInModal();
+            loadAndDisplayAllWorks();
         } else {
             console.error(`Erreur lors de la suppression du travail avec ID ${workId}. Statut : ${response.status}`);
         }
