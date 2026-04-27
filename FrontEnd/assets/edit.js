@@ -10,15 +10,7 @@ if (!token || token === "") {
     switchLogBtn(true);
 }
 
-// Récupération des travaux depuis l'API
-const requete = await fetch("http://localhost:5678/api/works");
-const works = await requete.json();
 
-const requeteCategories = await fetch("http://localhost:5678/api/categories");
-const categories = await requeteCategories.json();
-
-// Affiche les travaux dans la modale d'édition
-displayWorksInModal(works);
 
 /** Affiche ou masque les éléments de la page en fonction du mode d'édition
  * @param {boolean} value - true pour afficher les éléments d'édition, false pour les masquer
@@ -75,10 +67,15 @@ function displayModal(value) {
 }
 
 
+// Affiche les travaux dans la modale d'édition
+displayWorksInModal();
+
 /** Afficher les travaux dans la modale d'édition
  * @param {Array} works - Tableau d'objets représentant les travaux à afficher
  */
-function displayWorksInModal(works) {
+async function displayWorksInModal() {
+    const requete = await fetch("http://localhost:5678/api/works");
+    const works = await requete.json();
     const galleryModal = document.querySelector(".modal-gallery");
     galleryModal.innerHTML = "";
     works.forEach(work => {
@@ -111,8 +108,7 @@ function deleteWork(workId) {
         if (response.ok) {
             console.log(`Travail avec ID ${workId} supprimé avec succès.`);
             // Met à jour l'affichage des travaux après la suppression
-            // const updatedWorks = works.filter(work => work.id !== workId);
-            //displayWorksInModal(updatedWorks);
+            displayWorksInModal();
         } else {
             console.error(`Erreur lors de la suppression du travail avec ID ${workId}. Statut : ${response.status}`);
         }
