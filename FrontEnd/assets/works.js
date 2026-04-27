@@ -3,6 +3,12 @@ const requete = await fetch("http://localhost:5678/api/works");
 const works = await requete.json();
 console.log(works);
 
+// Récupération des catégories depuis l'API
+const requeteCategories = await fetch("http://localhost:5678/api/categories");
+let categories = await requeteCategories.json();
+categories.unshift({ id: 0, name: "Tous" }); // Ajout d'une catégorie "Tous" pour afficher tous les travaux
+console.log(categories);
+
 // Affichage des travaux dans la section "portfolio"
 const gallery = document.querySelector(".gallery");
 displayWorks(works);  
@@ -24,13 +30,6 @@ function displayWorks(works) {
         gallery.appendChild(figure);
     });
 }
-
-
-// Récupération des catégories depuis l'API
-const requeteCategories = await fetch("http://localhost:5678/api/categories");
-let categories = await requeteCategories.json();
-categories.unshift({ id: 0, name: "Tous" }); // Ajout d'une catégorie "Tous" pour afficher tous les travaux
-console.log(categories);
 
 // Création des catégories dans la section "filtres"
 const filtersContainer = document.querySelector(".filters");

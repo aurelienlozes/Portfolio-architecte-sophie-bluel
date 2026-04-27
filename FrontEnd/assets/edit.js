@@ -1,3 +1,4 @@
+// récupération des données depuis l'API
 const token = localStorage.getItem("token");
 if (!token || token === "") {
     //console.log("Aucun token trouvé");
