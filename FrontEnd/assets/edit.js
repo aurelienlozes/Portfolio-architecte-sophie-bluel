@@ -18,7 +18,7 @@ const requeteCategories = await fetch("http://localhost:5678/api/categories");
 const categories = await requeteCategories.json();
 
 // Affiche les travaux dans la modale d'édition
-displayWorksInModal(works); 
+displayWorksInModal(works);
 
 /** Affiche ou masque les éléments de la page en fonction du mode d'édition
  * @param {boolean} value - true pour afficher les éléments d'édition, false pour les masquer
@@ -33,10 +33,10 @@ function displayEditMode(value) {
 /** Basculer l'affichage des boutons de connexion et de déconnexion
  * @param {boolean} value - true pour afficher le bouton de déconnexion, false pour afficher le bouton de connexion
  */
-function switchLogBtn (value) {
-    const loginBtn = document.querySelector(".login-btn");    
+function switchLogBtn(value) {
+    const loginBtn = document.querySelector(".login-btn");
     const logoutBtn = document.querySelector(".logout-btn");
-    
+
     loginBtn.style.display = value ? "none" : "block";
     logoutBtn.style.display = value ? "block" : "none";
 }
@@ -93,10 +93,31 @@ function displayWorksInModal(works) {
         deleteBtn.classList.add("modal-delete-btn");
         deleteBtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
         deleteBtn.addEventListener("click", () => {
-            //console.log(`Suppression du travail : ${work.title} (ID: ${work.id})`);
-            //deleteWork(work.id);
+            deleteWork(work.id);
         });
         figure.appendChild(deleteBtn);
         galleryModal.appendChild(figure);
     });
+}
+
+
+function deleteWork(workId) {
+    fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }).then(response => {
+        if (response.ok) {
+            console.log(`Travail avec ID ${workId} supprimé avec succès.`);
+            // Met à jour l'affichage des travaux après la suppression
+            // const updatedWorks = works.filter(work => work.id !== workId);
+            //displayWorksInModal(updatedWorks);
+        } else {
+            console.error(`Erreur lors de la suppression du travail avec ID ${workId}. Statut : ${response.status}`);
+        }
+    })
+        .catch(error => {
+            console.error(`Erreur réseau lors de la suppression du travail avec ID ${workId} :`, error);
+        });
 }
