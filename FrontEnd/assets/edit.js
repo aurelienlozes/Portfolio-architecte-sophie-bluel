@@ -13,6 +13,9 @@ if (!token || token === "") {
 }
 
 
+// --------------------------------------------------------------------------
+// MODE EDITION -------------------------------------------------------------
+// --------------------------------------------------------------------------
 
 /** Affiche ou masque les éléments de la page en fonction du mode d'édition
  * @param {boolean} value - true pour afficher les éléments d'édition, false pour les masquer
@@ -42,15 +45,24 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
     switchLogBtn(false); // Affiche le bouton de connexion et masque le bouton de déconnexion
 });
 
+
+// --------------------------------------------------------------------------
+// FENETRE MODAL EDITION -------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+
 /* Affiche la popup modale d'édition lorsque le bouton "Modifier" est cliqué */
 document.querySelector(".open-modal").addEventListener("click", () => {
     displayModal(true);
 });
 
 /* Ferme la popup modale d'édition lorsque le bouton de fermeture est cliqué */
-document.querySelector(".close-modal").addEventListener("click", () => {
-    displayModal(false);
+document.querySelectorAll(".close-modal").forEach(button => {
+    button.addEventListener("click", () => {
+        displayModal(false);
+    });
 });
+
 
 /* Ferme la popup modale d'édition lorsque l'utilisateur clique en dehors de la modale */
 document.querySelector(".modal-overlay").addEventListener("click", () => {
@@ -78,7 +90,7 @@ displayWorksInModal();
 async function displayWorksInModal() {
     const requete = await fetch("http://localhost:5678/api/works");
     const works = await requete.json();
-    const galleryModal = document.querySelector(".modal-gallery");
+    const galleryModal = document.querySelector(".modal-body");
     galleryModal.innerHTML = "";
     works.forEach(work => {
         const figure = document.createElement("figure");
@@ -120,3 +132,24 @@ function deleteWork(workId) {
             console.error(`Erreur réseau lors de la suppression du travail avec ID ${workId} :`, error);
         });
 }
+
+
+
+// --------------------------------------------------------------------------
+// AJOUT DE PHOTOS ----------------------------------------------------------
+// --------------------------------------------------------------------------
+
+/* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
+document.querySelector(".modal-add-photo").addEventListener("click", () => {
+    const addPhotoPage = document.querySelector(".modal-ajout-photo");
+    addPhotoPage.style.display = "flex";
+    addPhotoPage.setAttribute("aria-hidden", "false");
+    const galleryPage = document.querySelector(".modal-galerie-photo");
+    galleryPage.style.display = "none";
+    galleryPage.setAttribute("aria-hidden", "true");
+});
+
+
+
+
+    

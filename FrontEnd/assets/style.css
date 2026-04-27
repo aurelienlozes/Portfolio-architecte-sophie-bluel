@@ -333,15 +333,19 @@ footer nav ul {
 }
 
 .modal-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center	;
 	background-color: white;
 	margin: 15% auto;
 	padding: 20px;
 	width: 630px;
 	height: 688px;
 	border-radius: 10px;
+}
+
+.modal-galerie-photo{
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .modal-header {
@@ -353,6 +357,7 @@ footer nav ul {
 
 .modal-header .close-btn {
 	align-self: flex-end;
+	color: black;
 }
 
 
@@ -370,7 +375,7 @@ footer nav ul {
 	color: black;
 }
 
-.modal-gallery {
+.modal-body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: flex-start;
@@ -380,7 +385,7 @@ footer nav ul {
 	border-bottom: #B3B3B3 solid 1px;
 }
 
-.modal-gallery figure {
+.modal-body figure {
 	display: flex;
 	justify-content: right;
 	height: 102px;
@@ -420,4 +425,11 @@ footer nav ul {
 
 .modal-add-photo a {
 	margin-bottom: 200px;
+}
+
+.modal-ajout-photo{
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
