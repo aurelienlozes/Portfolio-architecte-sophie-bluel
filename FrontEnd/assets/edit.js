@@ -52,7 +52,7 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
 
 
 /* Affiche la popup modale d'édition lorsque le bouton "Modifier" est cliqué */
-document.querySelector(".open-modal").addEventListener("click", () => {
+document.querySelector(".open-modal-btn").addEventListener("click", () => {
     displayGaleryPage(); // Affiche la page de galerie d'édition par défaut
     displayModal(true);
 });
