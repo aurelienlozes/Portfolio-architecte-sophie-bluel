@@ -140,7 +140,7 @@ function deleteWork(workId) {
 // --------------------------------------------------------------------------
 
 /* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
-document.querySelector(".modal-add-photo").addEventListener("click", () => {
+document.querySelector(".modal-add-photo-btn").addEventListener("click", () => {
     const addPhotoPage = document.querySelector(".modal-ajout-photo");
     addPhotoPage.style.display = "flex";
     addPhotoPage.setAttribute("aria-hidden", "false");

@@ -367,7 +367,6 @@ footer nav ul {
 	text-decoration: none;
 }
 
-
 .modal-nav .close-modal-btn {
 	font-size: 32px;
 	margin-right: 10px;
@@ -420,7 +419,7 @@ footer nav ul {
 	height: 115px;
 }
 
-.modal-add-photo {
+.modal-footer a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -432,10 +431,7 @@ footer nav ul {
 	height: 36px;
 	text-decoration: none;
 	border-radius: 60px;
-}
-
-.modal-add-photo a {
-	margin-bottom: 200px;
+	margin-bottom: 20px;
 }
 
 .modal-ajout-photo{
