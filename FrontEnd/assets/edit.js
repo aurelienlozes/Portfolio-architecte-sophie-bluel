@@ -57,7 +57,7 @@ document.querySelector(".open-modal").addEventListener("click", () => {
 });
 
 /* Ferme la popup modale d'édition lorsque le bouton de fermeture est cliqué */
-document.querySelectorAll(".close-modal").forEach(button => {
+document.querySelectorAll(".close-modal-btn").forEach(button => {
     button.addEventListener("click", () => {
         displayModal(false);
     });
@@ -147,6 +147,16 @@ document.querySelector(".modal-add-photo").addEventListener("click", () => {
     const galleryPage = document.querySelector(".modal-galerie-photo");
     galleryPage.style.display = "none";
     galleryPage.setAttribute("aria-hidden", "true");
+});
+
+/* ajout d'un écouteur sur le bouton "Retour à la galerie" pour revenir à la galerie d'édition */
+document.querySelector(".return-modal-btn").addEventListener("click", () => {
+    const addPhotoPage = document.querySelector(".modal-ajout-photo");
+    addPhotoPage.style.display = "none";
+    addPhotoPage.setAttribute("aria-hidden", "true");
+    const galleryPage = document.querySelector(".modal-galerie-photo");
+    galleryPage.style.display = "flex";
+    galleryPage.setAttribute("aria-hidden", "false");
 });
 
 

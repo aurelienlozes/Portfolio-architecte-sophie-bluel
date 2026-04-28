@@ -355,8 +355,10 @@ footer nav ul {
 	margin-bottom: 40px;
 }
 
-.modal-header .close-btn {
-	align-self: flex-end;
+.modal-header .modal-nav {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 	color: black;
 }
 
