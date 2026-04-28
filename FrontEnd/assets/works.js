@@ -1,3 +1,4 @@
+let works;
 
 // Récupération des catégories depuis l'API
 const requeteCategories = await fetch("http://localhost:5678/api/categories");
@@ -15,7 +16,7 @@ loadAndDisplayAllWorks();
 export async function loadAndDisplayAllWorks() {
     // Récupération des travaux depuis l'API
     const requete = await fetch("http://localhost:5678/api/works");
-    const works = await requete.json();
+    works = await requete.json();
     console.log(works);
     displayWorks(works);
 }
