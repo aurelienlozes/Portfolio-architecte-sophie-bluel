@@ -47,12 +47,13 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
 
 
 // --------------------------------------------------------------------------
-// FENETRE MODAL EDITION -------------------------------------------------------------
+// FENETRE MODAL NAVIGATION ----------------------------------------------------
 // --------------------------------------------------------------------------
 
 
 /* Affiche la popup modale d'édition lorsque le bouton "Modifier" est cliqué */
 document.querySelector(".open-modal").addEventListener("click", () => {
+    displayGaleryPage(); // Affiche la page de galerie d'édition par défaut
     displayModal(true);
 });
 
@@ -80,6 +81,37 @@ function displayModal(value) {
     modal.setAttribute("aria-hidden", !value);
 }
 
+/* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
+document.querySelector(".modal-add-photo-btn").addEventListener("click", () => {
+    displayAddPhotoPage();
+});
+
+function displayAddPhotoPage() {
+    const addPhotoPage = document.querySelector(".modal-ajout-photo");
+    addPhotoPage.style.display = "flex";
+    addPhotoPage.setAttribute("aria-hidden", "false");
+    const galleryPage = document.querySelector(".modal-galerie-photo");
+    galleryPage.style.display = "none";
+    galleryPage.setAttribute("aria-hidden", "true");
+}
+
+/* ajout d'un écouteur sur le bouton "Retour à la galerie" pour revenir à la galerie d'édition */
+document.querySelector(".return-modal-btn").addEventListener("click", () => {
+    displayGaleryPage();
+});
+
+function displayGaleryPage() {
+    const addPhotoPage = document.querySelector(".modal-ajout-photo");
+    addPhotoPage.style.display = "none";
+    addPhotoPage.setAttribute("aria-hidden", "true");
+    const galleryPage = document.querySelector(".modal-galerie-photo");
+    galleryPage.style.display = "flex";
+    galleryPage.setAttribute("aria-hidden", "false");
+}
+
+// --------------------------------------------------------------------------
+// FENETRE MODAL EDITION ----------------------------------------------------
+// --------------------------------------------------------------------------
 
 // Affiche les travaux dans la modale d'édition
 displayWorksInModal();
@@ -139,25 +171,7 @@ function deleteWork(workId) {
 // AJOUT DE PHOTOS ----------------------------------------------------------
 // --------------------------------------------------------------------------
 
-/* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
-document.querySelector(".modal-add-photo-btn").addEventListener("click", () => {
-    const addPhotoPage = document.querySelector(".modal-ajout-photo");
-    addPhotoPage.style.display = "flex";
-    addPhotoPage.setAttribute("aria-hidden", "false");
-    const galleryPage = document.querySelector(".modal-galerie-photo");
-    galleryPage.style.display = "none";
-    galleryPage.setAttribute("aria-hidden", "true");
-});
 
-/* ajout d'un écouteur sur le bouton "Retour à la galerie" pour revenir à la galerie d'édition */
-document.querySelector(".return-modal-btn").addEventListener("click", () => {
-    const addPhotoPage = document.querySelector(".modal-ajout-photo");
-    addPhotoPage.style.display = "none";
-    addPhotoPage.setAttribute("aria-hidden", "true");
-    const galleryPage = document.querySelector(".modal-galerie-photo");
-    galleryPage.style.display = "flex";
-    galleryPage.setAttribute("aria-hidden", "false");
-});
 
 
 
