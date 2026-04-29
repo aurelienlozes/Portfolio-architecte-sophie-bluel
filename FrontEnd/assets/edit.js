@@ -177,7 +177,7 @@ let categories = await requeteCategories.json();
 categories.unshift({ id: 0, name: "Sélectionner une catégorie" });
 
 // Remplir le selecteur avec les catégories
-const categorySelect = document.querySelector(".category-select");
+const categorySelect = document.querySelector(".upload-category-select");
 categories.forEach(category => {
     const option = document.createElement("option");
     option.value = category.id;
@@ -204,3 +204,17 @@ uploadBtn.addEventListener("change", (e) => {
         reader.readAsDataURL(file);
     }
 });
+
+
+/* activation du bouton "Valider" du formulaire d'ajout de photo lorsque tous les champs sont remplis */
+const titleInput = document.querySelector("#upload-title");
+const categoryInput = document.querySelector(".upload-category-select");
+const validerBtn = document.querySelector(".modal-valider-btn");
+function checkFormValidity() {
+    const isTitleValid = titleInput.value.trim() !== "";
+    const isCategoryValid = categoryInput.value !== "0";
+    const isImageSelected = uploadBtn.files && uploadBtn.files.length > 0;
+    validerBtn.disabled = !(isTitleValid && isCategoryValid && isImageSelected);
+}
+
+checkFormValidity();
