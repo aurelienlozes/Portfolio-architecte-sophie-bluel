@@ -114,12 +114,17 @@
 				<form class="modal-ajout-photo-form">
 					<div class="modal-body-ajout-photo">
 						<div class="modal-champs-ajout-photo">
-							<i class="fa-regular fa-image"></i>
-							<button type="button" class="modal-upload-btn">			
-								<p>+ Ajouter une photo</p>
-								<input type="file" name="photo" id="photo" accept="image/*">
-							</button>
-							<p>jpg, png : 4mo max</p>
+							<div class="image-upload-container">
+								<div class="image-preview-container">
+									<i class="fa-regular fa-image "></i>
+								</div>
+								<button type="button" class="modal-upload-btn">
+									<p>+ Ajouter une photo</p>
+									<input type="file" name="photo" id="photo" accept="image/*">
+								</button>
+								<p>jpg, png : 4mo max</p>
+							</div>
+							<img src="" alt="Aperçu de l'image" class="image-preview" style="display: none;">
 						</div>
 						<label for="title">Titre</label>
 						<input type="text" name="title" id="title">

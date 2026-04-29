@@ -171,9 +171,22 @@ function deleteWork(workId) {
 // AJOUT DE PHOTOS ----------------------------------------------------------
 // --------------------------------------------------------------------------
 
+/* Upload et affichage de l'image sélectionnée dans le formulaire d'ajout de photo */
+const uploadBtn = document.querySelector(".modal-upload-btn");
+const imagePreview = document.querySelector(".image-preview");
+const uploadChamps = document.querySelector(".image-upload-container");
+uploadBtn.addEventListener("change", (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
 
-
-
-
-
-    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block";
+            imagePreview.style.width = "129px";
+            uploadChamps.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+    }
+});

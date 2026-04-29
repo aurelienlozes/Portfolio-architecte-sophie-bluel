@@ -501,7 +501,13 @@ margin: auto;
 	margin-bottom: 40px;
 }
 
-.modal-champs-ajout-photo .fa-image{
+.image-upload-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.image-upload-container .fa-image{
 	font-size: 68px;
 	color: #B3B3B3;
 	margin-bottom: 10px;
