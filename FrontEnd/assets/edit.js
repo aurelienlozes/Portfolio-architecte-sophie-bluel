@@ -187,13 +187,14 @@ categories.forEach(category => {
 
 /* Upload et affichage de l'image sélectionnée dans le formulaire d'ajout de photo */
 const uploadBtn = document.querySelector(".modal-upload-btn");
-let imagePreview = document.querySelector(".image-preview");
+const imagePreview = document.querySelector(".image-preview");
 const uploadChamps = document.querySelector(".image-upload-container");
+let imgToUpload = null;
 uploadBtn.addEventListener("change", (e) => {
     e.preventDefault();
-    const file = e.target.files[0];
-
-    if (file) {
+    imgToUpload = e.target.files[0];
+    
+    if (imgToUpload) {
         const reader = new FileReader();
         reader.onload = (e) => {
             imagePreview.src = e.target.result;
@@ -202,7 +203,7 @@ uploadBtn.addEventListener("change", (e) => {
             uploadChamps.style.display = "none";
             checkFormValidity();
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(imgToUpload);
     }
 });
 
@@ -225,3 +226,37 @@ checkFormValidity();
 titleInput.addEventListener("input", checkFormValidity);
 categoryInput.addEventListener("change", checkFormValidity);
 
+/* Gérer la soumission du formulaire d'ajout de photo */
+validerBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    console.log(uploadBtn); // Log pour vérifier le fichier sélectionné
+    // Implémenter la logique d'ajout de photo ici
+    const formData = new FormData();
+    formData.append("title", titleInput.value);
+    formData.append("category", categoryInput.value);
+    formData.append("image", imgToUpload);
+
+    console.log(formData.get("title"), formData.get("category"), formData.get("image")); // Log pour vérifier les données du formulaire
+
+    try {
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+            body: formData
+        });
+
+        if (response.ok) {
+            console.log("Photo ajoutée avec succès.");
+            // Met à jour l'affichage des travaux après l'ajout
+            displayWorksInModal();
+            loadAndDisplayAllWorks();
+        } else {
+            console.error(`Erreur lors de l'ajout de la photo. Statut : ${response.status}`);
+        }
+    } catch (error) {
+        console.error("Erreur réseau lors de l'ajout de la photo :", error);
+    }
+});
