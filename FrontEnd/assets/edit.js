@@ -79,6 +79,7 @@ function displayModal(value) {
     const modal = document.querySelector(".modal-overlay");
     modal.style.display = value ? "block" : "none";
     modal.setAttribute("aria-hidden", !value);
+    resetAddPhotoForm(); // Réinitialise le formulaire d'ajout de photo à chaque ouverture ou fermeture de la modale
 }
 
 /* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
@@ -107,6 +108,7 @@ function displayGaleryPage() {
     const galleryPage = document.querySelector(".modal-galerie-photo");
     galleryPage.style.display = "flex";
     galleryPage.setAttribute("aria-hidden", "false");
+    resetAddPhotoForm(); // Réinitialise le formulaire d'ajout de photo à chaque retour à la galerie d'édition
 }
 
 // --------------------------------------------------------------------------
@@ -230,14 +232,13 @@ categoryInput.addEventListener("change", checkFormValidity);
 validerBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    console.log(uploadBtn); // Log pour vérifier le fichier sélectionné
     // Implémenter la logique d'ajout de photo ici
     const formData = new FormData();
     formData.append("title", titleInput.value);
     formData.append("category", categoryInput.value);
     formData.append("image", imgToUpload);
 
-    console.log(formData.get("title"), formData.get("category"), formData.get("image")); // Log pour vérifier les données du formulaire
+    //console.log(formData.get("title"), formData.get("category"), formData.get("image")); // Log pour vérifier les données du formulaire
 
     try {
         const response = await fetch("http://localhost:5678/api/works", {
@@ -253,6 +254,8 @@ validerBtn.addEventListener("click", async (e) => {
             // Met à jour l'affichage des travaux après l'ajout
             displayWorksInModal();
             loadAndDisplayAllWorks();
+            // Retourne à la galerie d'édition après l'ajout de la photo
+            displayGaleryPage();
         } else {
             console.error(`Erreur lors de l'ajout de la photo. Statut : ${response.status}`);
         }
@@ -260,3 +263,15 @@ validerBtn.addEventListener("click", async (e) => {
         console.error("Erreur réseau lors de l'ajout de la photo :", error);
     }
 });
+
+
+/* fonction de réinitialisation du formulaire d'ajout de photo après la soumission ou la fermeture de la modale */
+function resetAddPhotoForm() {
+    titleInput.value = "";
+    categoryInput.value = "0";
+    imagePreview.src = "";
+    imagePreview.style.display = "none";
+    uploadChamps.style.display = "flex";
+    imgToUpload = null;
+    checkFormValidity();
+}
