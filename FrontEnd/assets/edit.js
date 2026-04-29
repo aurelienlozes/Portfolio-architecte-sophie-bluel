@@ -171,6 +171,20 @@ function deleteWork(workId) {
 // AJOUT DE PHOTOS ----------------------------------------------------------
 // --------------------------------------------------------------------------
 
+/* Récupération des catégories depuis l'API pour les afficher dans le formulaire d'ajout de photo */
+const requeteCategories = await fetch("http://localhost:5678/api/categories");
+let categories = await requeteCategories.json();
+categories.unshift({ id: 0, name: "Sélectionner une catégorie" });
+
+// Remplir le selecteur avec les catégories
+const categorySelect = document.querySelector(".category-select");
+categories.forEach(category => {
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    categorySelect.appendChild(option);
+});
+
 /* Upload et affichage de l'image sélectionnée dans le formulaire d'ajout de photo */
 const uploadBtn = document.querySelector(".modal-upload-btn");
 const imagePreview = document.querySelector(".image-preview");
