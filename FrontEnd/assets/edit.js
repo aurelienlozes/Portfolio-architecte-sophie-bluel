@@ -187,7 +187,7 @@ categories.forEach(category => {
 
 /* Upload et affichage de l'image sélectionnée dans le formulaire d'ajout de photo */
 const uploadBtn = document.querySelector(".modal-upload-btn");
-const imagePreview = document.querySelector(".image-preview");
+let imagePreview = document.querySelector(".image-preview");
 const uploadChamps = document.querySelector(".image-upload-container");
 uploadBtn.addEventListener("change", (e) => {
     e.preventDefault();
@@ -200,6 +200,7 @@ uploadBtn.addEventListener("change", (e) => {
             imagePreview.style.display = "block";
             imagePreview.style.width = "129px";
             uploadChamps.style.display = "none";
+            checkFormValidity();
         };
         reader.readAsDataURL(file);
     }
@@ -211,10 +212,16 @@ const titleInput = document.querySelector("#upload-title");
 const categoryInput = document.querySelector(".upload-category-select");
 const validerBtn = document.querySelector(".modal-valider-btn");
 function checkFormValidity() {
+    //console.log("Vérification de la validité du formulaire...");
     const isTitleValid = titleInput.value.trim() !== "";
     const isCategoryValid = categoryInput.value !== "0";
-    const isImageSelected = uploadBtn.files && uploadBtn.files.length > 0;
+    const isImageSelected = imagePreview.src !== "";
+    //console.log(`Titre valide : ${isTitleValid}, Catégorie valide : ${isCategoryValid}, Image sélectionnée : ${isImageSelected}`);
     validerBtn.disabled = !(isTitleValid && isCategoryValid && isImageSelected);
 }
 
 checkFormValidity();
+/* lancer la vérification de la validité du formulaire à chaque changement dans les champs */
+titleInput.addEventListener("input", checkFormValidity);
+categoryInput.addEventListener("change", checkFormValidity);
+
