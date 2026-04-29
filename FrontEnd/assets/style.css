@@ -440,3 +440,52 @@ footer nav ul {
 	flex-direction: column;
 	align-items: center;
 }
+
+.modal-body-ajout-photo{
+	display: flex;
+	flex-direction: column;
+	width:420px;
+	height: 500px;
+	border-bottom: #B3B3B3 solid 1px;
+}
+
+.modal-champs-ajout-photo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 169px;
+	background-color: #E8F1F6;
+}
+
+.modal-champs-ajout-photo .fa-image{
+	font-size: 68px;
+	color: #B3B3B3;
+	margin-bottom: 10px;
+}
+
+.modal-upload-btn{
+	z-index: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Syne';
+	font-weight: 500;
+	font-size: 14px;
+	color: #306685;
+	background-color: #CBD6DC;
+	width: 180px;
+	height: 36px;
+	text-decoration: none;
+	border: none;
+	border-radius: 60px;
+	margin-bottom: 10px;
+}
+
+.modal-upload-btn input[type="file"]{
+	position: absolute;
+	z-index: 1;
+	opacity: 0;
+}
+
