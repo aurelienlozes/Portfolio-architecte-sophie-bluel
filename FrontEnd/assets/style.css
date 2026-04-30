@@ -199,15 +199,20 @@ nav li a.active:hover {
 	width: 80%;
 }
 
-#introduction article {
-	flex: 1
+#introduction .introduction-text {
+	flex: 1;
+
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 14px;
+	margin-bottom: 15px;
+	width: 404px;
 }
 
 
