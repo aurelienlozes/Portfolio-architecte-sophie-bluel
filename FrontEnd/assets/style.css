@@ -317,6 +317,16 @@ margin: auto;
 }
 
 
+/* --------------------------------- FOOTER --------------------------------- */
+footer {
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	background-color: white;
+	height: 60px;
+}
+
+
 /* --------------------------------- LOGIN PAGE --------------------------------- */
 #login {
 	display: flex;
