@@ -25,6 +25,9 @@ function displayEditMode(value) {
     editModeElements.forEach(element => {
         element.style.display = value ? "block" : "none";
     });
+
+    const filtersContainer = document.querySelector(".filters");
+    filtersContainer.style.display = value ? "none" : "flex";
 }
 
 /** Basculer l'affichage des boutons de connexion et de déconnexion
