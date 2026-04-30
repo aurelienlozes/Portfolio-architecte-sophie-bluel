@@ -204,7 +204,7 @@ uploadBtn.addEventListener("change", (e) => {
         reader.onload = (e) => {
             imagePreview.src = e.target.result;
             imagePreview.style.display = "block";
-            imagePreview.style.width = "129px";
+            imagePreview.style.height = "169px";
             uploadChamps.style.display = "none";
             checkFormValidity();
         };
