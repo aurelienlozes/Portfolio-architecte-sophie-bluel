@@ -488,6 +488,9 @@ footer {
 	border-radius: 60px;
 }
 
+
+/* --------------------------------- MODAL ADD PHOTO --------------------------------- */
+
 .modal-ajout-photo{
 	width:100%;
 	display: flex;
