@@ -4,6 +4,7 @@ let works;
 const requeteCategories = await fetch("http://localhost:5678/api/categories");
 let categories = await requeteCategories.json();
 categories.unshift({ id: 0, name: "Tous" }); // Ajout d'une catégorie "Tous" pour afficher tous les travaux
+console.log("categories :");
 console.log(categories);
 
 // Affichage des travaux dans la section "portfolio"
@@ -17,6 +18,7 @@ export async function loadAndDisplayAllWorks() {
     // Récupération des travaux depuis l'API
     const requete = await fetch("http://localhost:5678/api/works");
     works = await requete.json();
+    console.log("travaux :");
     console.log(works);
     displayWorks(works);
 }
