@@ -83,21 +83,14 @@ function displayModal(value) {
     modal.style.display = value ? "block" : "none";
     modal.setAttribute("aria-hidden", !value);
     resetAddPhotoForm(); // Réinitialise le formulaire d'ajout de photo à chaque ouverture ou fermeture de la modale
+    if(!value) document.querySelector('.open-modal-btn').focus();
+    else document.querySelector('.modal-add-photo-btn').focus();
 }
 
 /* ajout d'un écouteur sur le bouton "Ajouter une photo" pour afficher le formulaire d'ajout de photo */
 document.querySelector(".modal-add-photo-btn").addEventListener("click", () => {
     displayAddPhotoPage();
 });
-
-function displayAddPhotoPage() {
-    const addPhotoPage = document.querySelector(".modal-ajout-photo");
-    addPhotoPage.style.display = "flex";
-    addPhotoPage.setAttribute("aria-hidden", "false");
-    const galleryPage = document.querySelector(".modal-galerie-photo");
-    galleryPage.style.display = "none";
-    galleryPage.setAttribute("aria-hidden", "true");
-}
 
 /* ajout d'un écouteur sur le bouton "Retour à la galerie" pour revenir à la galerie d'édition */
 document.querySelector(".return-modal-btn").addEventListener("click", () => {
@@ -111,8 +104,21 @@ function displayGaleryPage() {
     const galleryPage = document.querySelector(".modal-galerie-photo");
     galleryPage.style.display = "flex";
     galleryPage.setAttribute("aria-hidden", "false");
+    document.querySelector('.modal-add-photo-btn').focus();
     resetAddPhotoForm(); // Réinitialise le formulaire d'ajout de photo à chaque retour à la galerie d'édition
 }
+
+function displayAddPhotoPage() {
+    const addPhotoPage = document.querySelector(".modal-ajout-photo");
+    addPhotoPage.style.display = "flex";
+    addPhotoPage.setAttribute("aria-hidden", "false");
+    document.querySelector('.return-modal-btn').focus();
+    const galleryPage = document.querySelector(".modal-galerie-photo");
+    galleryPage.style.display = "none";
+    galleryPage.setAttribute("aria-hidden", "true");
+}
+
+
 
 // --------------------------------------------------------------------------
 // FENETRE MODAL EDITION ----------------------------------------------------
