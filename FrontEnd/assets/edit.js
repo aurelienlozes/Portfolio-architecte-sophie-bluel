@@ -227,7 +227,7 @@ function checkFormValidity() {
     //console.log("Vérification de la validité du formulaire...");
     const isTitleValid = titleInput.value.trim() !== "";
     const isCategoryValid = categoryInput.value !== "0";
-    const isImageSelected = imagePreview.src !== "";
+    const isImageSelected = imgToUpload !== null;
     //console.log(`Titre valide : ${isTitleValid}, Catégorie valide : ${isCategoryValid}, Image sélectionnée : ${isImageSelected}`);
     validerBtn.disabled = !(isTitleValid && isCategoryValid && isImageSelected);
 }
