@@ -232,7 +232,6 @@ function checkFormValidity() {
     validerBtn.disabled = !(isTitleValid && isCategoryValid && isImageSelected);
 }
 
-checkFormValidity();
 /* lancer la vérification de la validité du formulaire à chaque changement dans les champs */
 titleInput.addEventListener("input", checkFormValidity);
 categoryInput.addEventListener("change", checkFormValidity);
