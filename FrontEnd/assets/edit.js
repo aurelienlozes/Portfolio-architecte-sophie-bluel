@@ -198,7 +198,6 @@ categories.forEach(category => {
 
 /* Upload et affichage de l'image sélectionnée dans le formulaire d'ajout de photo */
 const uploadBtn = document.querySelector(".modal-upload-btn");
-const imagePreview = document.querySelector(".image-preview");
 const uploadChamps = document.querySelector(".image-upload-container");
 let imgToUpload = null;
 uploadBtn.addEventListener("change", (e) => {
@@ -208,9 +207,11 @@ uploadBtn.addEventListener("change", (e) => {
     if (imgToUpload) {
         const reader = new FileReader();
         reader.onload = (e) => {
+            const imagePreview = document.createElement("img");
             imagePreview.src = e.target.result;
-            imagePreview.style.display = "block";
             imagePreview.style.height = "169px";
+            imagePreview.className = "image-preview";
+            document.querySelector(".modal-champs-ajout-photo").append(imagePreview);
             uploadChamps.style.display = "none";
             checkFormValidity();
         };
@@ -277,9 +278,8 @@ validerBtn.addEventListener("click", async (e) => {
 function resetAddPhotoForm() {
     titleInput.value = "";
     categoryInput.value = "0";
-    imagePreview.src = "";
-    imagePreview.style.display = "none";
     uploadChamps.style.display = "flex";
     imgToUpload = null;
+    if(document.querySelector(".image-preview")) document.querySelector(".image-preview").remove();
     checkFormValidity();
 }
